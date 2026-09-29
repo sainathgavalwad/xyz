@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lumina Auth | Next-Gen Dynamic Email & Passwordless Login</title>
+  <meta name="description" content="Experience the future of authentication with Lumina Auth. Ultra-secure passwordless magic links, zero-knowledge encryption, and seamless sign-in.">
+
+  <!-- Google Fonts: Plus Jakarta Sans & Space Grotesk -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Dynamic Particle Canvas -->
+  <canvas id="bgCanvas"></canvas>
+
+  <!-- Interactive Ambient Mouse Cursor Glow -->
+  <div class="ambient-glow-cursor" id="ambientCursorGlow"></div>
+
+  <!-- Atmospheric Background Glow Blooms -->
+  <div class="bloom-orb bloom-orb-1"></div>
+  <div class="bloom-orb bloom-orb-2"></div>
+  <div class="bloom-orb bloom-orb-3"></div>
+
+  <!-- Page Application Container -->
+  <div class="app-container">
+
+    <!-- Sticky Navigation Header -->
+    <header class="nav-header">
+      <a href="#" class="brand-wrapper" id="brandLogo">
+        <div class="brand-icon-box">
+          <svg viewBox="0 0 24 24">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          </svg>
+        </div>
+        <span class="brand-text">LUMINA<span style="color: var(--accent-cyan);">.</span>AUTH</span>
+      </a>
+
+      <div class="nav-actions">
+        <!-- Live System Status -->
+        <div class="system-status-pill" id="systemStatusPill">
+          <div class="status-dot"></div>
+          <span>Shield 3.0 Active</span>
+        </div>
+
+        <!-- Synthesizer Audio Sound Toggle -->
+        <button type="button" class="sound-toggle-btn" id="soundToggleBtn" title="Toggle Interactive Audio" aria-label="Toggle Sound">
+          <svg id="soundIcon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+          </svg>
+        </button>
+
+        <a href="#security" class="nav-link">Security Specs</a>
+        <a href="#enterprise" class="nav-link">Enterprise SSO</a>
+      </div>
+    </header>
+
+    <!-- Hero Main Split Layout -->
+    <main class="hero-main">
+
+      <!-- Left Column: High-Impact Showcase & Proof -->
+      <section class="showcase-content">
+        <!-- Live Badge -->
+        <div class="live-badge">
+          <span class="live-badge-glow"></span>
+          <span class="live-badge-text">Autonomous Identity Fabric</span>
+        </div>
+
+        <!-- Headline -->
+        <h1 class="hero-title">
+          The Fastest, Most Dynamic <br>
+          <span class="gradient-text">Email Login Experience.</span>
+        </h1>
+
+        <!-- Subtitle -->
+        <p class="hero-subtitle">
+          Say goodbye to forgotten passwords and sluggish flows. Experience zero-knowledge authentication with instant cryptographic magic links and sub-second verification.
+        </p>
+
+        <!-- Feature Pill Highlights -->
+        <div class="feature-cards-grid">
+          <div class="feature-pill-card">
+            <div class="pill-icon-box indigo">
+              <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+              </svg>
+            </div>
+            <div class="pill-text">
+              <h4>Instant Magic Links</h4>
+              <p>One-click delivery in &lt;40ms directly to your primary inbox.</p>
+            </div>
+          </div>
+
+          <div class="feature-pill-card">
+            <div class="pill-icon-box cyan">
+              <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+              </svg>
+            </div>
+            <div class="pill-text">
+              <h4>Zero-Knowledge Proof</h4>
+              <p>Credentials never leave client-side memory in plaintext.</p>
+            </div>
+          </div>
+
+          <div class="feature-pill-card">
+            <div class="pill-icon-box pink">
+              <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+              </svg>
+            </div>
+            <div class="pill-text">
+              <h4>Adaptive Biometrics</h4>
+              <p>Hardware-bound TouchID, FaceID, and WebAuthn keys.</p>
+            </div>
+          </div>
+
+          <div class="feature-pill-card">
+            <div class="pill-icon-box emerald">
+              <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
+              </svg>
+            </div>
+            <div class="pill-text">
+              <h4>Enterprise Ready</h4>
+              <p>Multi-tenant SAML, Okta, and Azure AD federation.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Live Trust Metrics -->
+        <div class="metrics-strip">
+          <div class="metric-item">
+            <span class="metric-num">99.999%</span>
+            <span class="metric-label">Uptime SLA</span>
+          </div>
+          <div class="metric-item">
+            <span class="metric-num">14.8M+</span>
+            <span class="metric-label">Daily Logins</span>
+          </div>
+          <div class="metric-item">
+            <span class="metric-num">&lt;38ms</span>
+            <span class="metric-label">Auth Latency</span>
+          </div>
+        </div>
+
+        <!-- Social Proof Bar -->
+        <div class="social-proof-bar">
+          <div class="avatar-stack">
+            <div class="avatar-fake avatar-1">SK</div>
+            <div class="avatar-fake avatar-2">AR</div>
+            <div class="avatar-fake avatar-3">ML</div>
+            <div class="avatar-fake avatar-4">TN</div>
+          </div>
+          <div class="proof-quote">
+            Securing <strong>80,000+ teams</strong> globally with SOC-2 compliance.
+          </div>
+        </div>
+      </section>
+
+      <!-- Right Column: Glassmorphic Interactive Auth Hub -->
+      <section class="auth-wrapper">
+        <div class="auth-halo"></div>
+
+        <div class="auth-card" id="authCard">
+          <div class="auth-card-inner">
+
+            <!-- Card Header -->
+            <div class="auth-header">
+              <h2>Welcome to Lumina</h2>
+              <p>Sign in with your email or passwordless magic link</p>
+            </div>
+
+            <!-- Tab Switcher Navigation -->
+            <div class="tab-switcher" role="tablist">
+              <div class="tab-indicator" id="tabIndicator"></div>
+              <button type="button" class="tab-btn active" data-tab="signin" id="tabBtnSignIn">Sign In</button>
+              <button type="button" class="tab-btn" data-tab="magic" id="tabBtnMagic">Magic Link</button>
+              <button type="button" class="tab-btn" data-tab="signup" id="tabBtnSignUp">Register</button>
+            </div>
+
+            <!-- Forms Viewport -->
+            <div class="forms-viewport">
+
+              <!-- ==========================================================
+                   PANEL 1: SIGN IN (EMAIL + PASSWORD)
+                   ========================================================== -->
+              <div class="auth-panel active" id="panelSignIn">
+                <form id="formSignIn" novalidate>
+                  
+                  <!-- Email Input -->
+                  <div class="form-group">
+                    <div class="input-label-row">
+                      <label for="signInEmail" class="input-label">
+                        Email Address
+                      </label>
+                    </div>
+
+                    <div class="input-control-box">
+                      <div class="input-icon-lead">
+                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207" />
+                        </svg>
+                      </div>
+                      <input 
+                        type="email" 
+                        id="signInEmail" 
+                        class="native-input" 
+                        placeholder="alex@acmecorp.com" 
+                        autocomplete="email" 
+                        required
+                      >
+                      <div class="input-icon-trail">
+                        <button type="button" class="icon-btn btn-clear-input" data-target="signInEmail" title="Clear input" aria-label="Clear email input">
+                          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                          </svg>
+                        </button>
+                      </div>
+                    </div>
+
+                    <!-- Dynamic Domain Suggestions -->
+                    <div class="domain-suggestions" id="signInDomainChips"></div>
+                  </div>
+
+                  <!-- Password Input -->
+                  <div class="form-group">
+                    <div class="input-label-row">
+                      <label for="signInPassword" class="input-label">Password</label>
+                      <a href="#forgot" class="forgot-link" id="linkForgotPassword">Forgot password?</a>
+                    </div>
+
+                    <div class="input-control-box">
+                      <div class="input-icon-lead">
+                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                        </svg>
+                      </div>
+                      <input 
+                        type="password" 
+                        id="signInPassword" 
+                        class="native-input" 
+                        placeholder="••••••••••••" 
+                        autocomplete="current-password" 
+                        required
+                      >
+                      <div class="input-icon-trail">
+                        <button type="button" class="icon-btn btn-toggle-pwd" data-target="signInPassword" title="Toggle visibility" aria-label="Toggle password visibility">
+                          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                          </svg>
+                        </button>
+                      </div>
+                    </div>
+
+                    <!-- Caps Lock Warning -->
+                    <div class="caps-lock-warning" id="signInCapsLock">
+                      <svg fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
+                      </svg>
+                      <span>Caps Lock is ON</span>
+                    </div>
+                  </div>
+
+                  <!-- Remember Me -->
+                  <div class="remember-row">
+                    <label class="custom-checkbox-label">
+                      <input type="checkbox" id="signInRemember" checked>
+                      <span class="custom-check-box">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                          <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                      </span>
+                      <span>Trust this device for 30 days</span>
+                    </label>
+                  </div>
+
+                  <!-- Submit Primary Button -->
+                  <button type="submit" class="btn-submit-primary" id="btnSignInSubmit">
+                    <span class="btn-spinner"></span>
+                    <span class="btn-text-content">Sign In to Workspace</span>
+                    <svg class="btn-arrow-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                  </button>
+                </form>
+
+                <!-- Divider -->
+                <div class="auth-divider">
+                  <span>or continue with</span>
+                </div>
+
+                <!-- Social OAuth Grid -->
+                <div class="social-buttons-grid">
+                  <button type="button" class="btn-social" data-provider="Google" id="btnGoogleAuth">
+                    <svg viewBox="0 0 24 24">
+                      <path fill="#EA4335" d="M12 5c1.6 0 3 .6 4.1 1.7l3.1-3.1C17.3 1.8 14.8 1 12 1 7.5 1 3.7 3.6 1.9 7.3l3.7 2.9C6.5 7.4 9 5 12 5z"/>
+                      <path fill="#4285F4" d="M23.5 12.3c0-.8-.1-1.6-.2-2.3H12v4.6h6.5c-.3 1.5-1.1 2.8-2.4 3.7l3.7 2.9c2.2-2 3.7-5 3.7-8.9z"/>
+                      <path fill="#FBBC05" d="M5.6 14.8c-.2-.7-.4-1.5-.4-2.8s.2-2.1.4-2.8L1.9 6.3C.7 8.7 0 10.8 0 12s.7 3.3 1.9 5.7l3.7-2.9z"/>
+                      <path fill="#34A853" d="M12 23c3.2 0 6-1.1 8-3l-3.7-2.9c-1.1.7-2.5 1.2-4.3 1.2-3 0-5.5-2.4-6.4-5.2L1.9 16C3.7 19.7 7.5 23 12 23z"/>
+                    </svg>
+                    <span>Google</span>
+                  </button>
+
+                  <button type="button" class="btn-social" data-provider="GitHub" id="btnGithubAuth">
+                    <svg fill="currentColor" viewBox="0 0 24 24">
+                      <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+                    </svg>
+                    <span>GitHub</span>
+                  </button>
+
+                  <button type="button" class="btn-social" data-provider="Apple" id="btnAppleAuth">
+                    <svg fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.49c.67-.82 1.13-1.96 1.01-3.1-.97.04-2.15.65-2.85 1.47-.61.71-1.15 1.87-1.01 2.98 1.08.08 2.18-.53 2.85-1.35z"/>
+                    </svg>
+                    <span>Apple</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- ==========================================================
+                   PANEL 2: MAGIC LINK (PASSWORDLESS)
+                   ========================================================== -->
+              <div class="auth-panel" id="panelMagicLink">
+                <div id="magicLinkFormView">
+                  <div style="margin-bottom: 1.25rem;">
+                    <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.5;">
+                      Enter your email to receive an instant, cryptographic login link. No password required.
+                    </p>
+                  </div>
+
+                  <form id="formMagic" novalidate>
+                    <div class="form-group">
+                      <label for="magicEmail" class="input-label" style="margin-bottom: 0.5rem;">
+                        Deliver Link To
+                      </label>
+                      <div class="input-control-box">
+                        <div class="input-icon-lead">
+                          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                          </svg>
+                        </div>
+                        <input 
+                          type="email" 
+                          id="magicEmail" 
+                          class="native-input" 
+                          placeholder="sarah@hyperdrive.io" 
+                          autocomplete="email" 
+                          required
+                        >
+                        <div class="input-icon-trail">
+                          <button type="button" class="icon-btn btn-clear-input" data-target="magicEmail" title="Clear input" aria-label="Clear magic email input">
+                            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                          </button>
+                        </div>
+                      </div>
+                      <div class="domain-suggestions" id="magicDomainChips"></div>
+                    </div>
+
+                    <button type="submit" class="btn-submit-primary" id="btnMagicSubmit" style="margin-top: 1.5rem;">
+                      <span class="btn-spinner"></span>
+                      <span class="btn-text-content">Send Instant Magic Link</span>
+                      <svg class="btn-arrow-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                      </svg>
+                    </button>
+                  </form>
+                </div>
+
+                <!-- Magic Link Sent Sub-View (Interactive OTP Code Entry) -->
+                <div class="magic-link-sent-view" id="magicLinkSentView">
+                  <div class="envelope-anim-box">
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                    </svg>
+                  </div>
+                  <h3 style="color:#fff; font-size: 1.25rem; font-weight:700; margin-bottom: 0.35rem;">Check Your Inbox</h3>
+                  <p style="font-size: 0.84rem; color: var(--text-secondary); max-width: 340px;">
+                    We dispatched an instant authorization link to <span class="magic-sent-email" id="magicTargetEmail">your email</span>.
+                  </p>
+
+                  <div style="margin-top: 1rem; font-size: 0.78rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em;">
+                    Or enter 6-digit access code
+                  </div>
+
+                  <div class="otp-boxes-row">
+                    <input type="text" class="otp-digit-input" maxlength="1" pattern="\d*" inputmode="numeric">
+                    <input type="text" class="otp-digit-input" maxlength="1" pattern="\d*" inputmode="numeric">
+                    <input type="text" class="otp-digit-input" maxlength="1" pattern="\d*" inputmode="numeric">
+                    <input type="text" class="otp-digit-input" maxlength="1" pattern="\d*" inputmode="numeric">
+                    <input type="text" class="otp-digit-input" maxlength="1" pattern="\d*" inputmode="numeric">
+                    <input type="text" class="otp-digit-input" maxlength="1" pattern="\d*" inputmode="numeric">
+                  </div>
+
+                  <div class="magic-resend-countdown">
+                    Didn't receive it? <button type="button" class="btn-text-link" id="magicResendBtn">Resend Code</button> <span id="magicCountdown">(60s)</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- ==========================================================
+                   PANEL 3: REGISTER (CREATE ACCOUNT)
+                   ========================================================== -->
+              <div class="auth-panel" id="panelSignUp">
+                <form id="formSignUp" novalidate>
+                  
+                  <!-- Full Name -->
+                  <div class="form-group">
+                    <label for="signUpName" class="input-label" style="margin-bottom: 0.5rem;">Full Name</label>
+                    <div class="input-control-box">
+                      <div class="input-icon-lead">
+                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                        </svg>
+                      </div>
+                      <input 
+                        type="text" 
+                        id="signUpName" 
+                        class="native-input" 
+                        placeholder="Elena Vance" 
+                        autocomplete="name" 
+                        required
+                      >
+                    </div>
+                  </div>
+
+                  <!-- Email Address -->
+                  <div class="form-group">
+                    <label for="signUpEmail" class="input-label" style="margin-bottom: 0.5rem;">Work Email</label>
+                    <div class="input-control-box">
+                      <div class="input-icon-lead">
+                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207" />
+                        </svg>
+                      </div>
+                      <input 
+                        type="email" 
+                        id="signUpEmail" 
+                        class="native-input" 
+                        placeholder="elena@studio.design" 
+                        autocomplete="email" 
+                        required
+                      >
+                    </div>
+                    <div class="domain-suggestions" id="signUpDomainChips"></div>
+                  </div>
+
+                  <!-- Password & Live Strength Meter -->
+                  <div class="form-group">
+                    <label for="signUpPassword" class="input-label" style="margin-bottom: 0.5rem;">Create Strong Password</label>
+                    <div class="input-control-box">
+                      <div class="input-icon-lead">
+                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                        </svg>
+                      </div>
+                      <input 
+                        type="password" 
+                        id="signUpPassword" 
+                        class="native-input" 
+                        placeholder="At least 8 characters" 
+                        autocomplete="new-password" 
+                        required
+                      >
+                      <div class="input-icon-trail">
+                        <button type="button" class="icon-btn btn-toggle-pwd" data-target="signUpPassword" title="Toggle visibility" aria-label="Toggle password visibility">
+                          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                          </svg>
+                        </button>
+                      </div>
+                    </div>
+
+                    <!-- Live Strength Visualizer -->
+                    <div class="strength-meter-wrap" id="signUpStrengthMeter">
+                      <div class="strength-bars-row">
+                        <div class="strength-bar" id="strBar1"></div>
+                        <div class="strength-bar" id="strBar2"></div>
+                        <div class="strength-bar" id="strBar3"></div>
+                        <div class="strength-bar" id="strBar4"></div>
+                      </div>
+                      <div class="strength-label-row">
+                        <span style="color: var(--text-muted);">Security Rating:</span>
+                        <span class="strength-status-text" id="strengthStatusText">Weak</span>
+                      </div>
+                      <div class="strength-criteria-list">
+                        <div class="criteria-item" id="critLength">
+                          <span class="criteria-dot"></span>
+                          <span>8+ Characters</span>
+                        </div>
+                        <div class="criteria-item" id="critNumber">
+                          <span class="criteria-dot"></span>
+                          <span>At least 1 number</span>
+                        </div>
+                        <div class="criteria-item" id="critUpper">
+                          <span class="criteria-dot"></span>
+                          <span>Uppercase letter</span>
+                        </div>
+                        <div class="criteria-item" id="critSpecial">
+                          <span class="criteria-dot"></span>
+                          <span>Special symbol</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Caps Lock -->
+                    <div class="caps-lock-warning" id="signUpCapsLock">
+                      <svg fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
+                      </svg>
+                      <span>Caps Lock is ON</span>
+                    </div>
+                  </div>
+
+                  <!-- Terms Agreement -->
+                  <div class="remember-row" style="margin-top: 1rem;">
+                    <label class="custom-checkbox-label">
+                      <input type="checkbox" id="signUpTerms" required>
+                      <span class="custom-check-box">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                          <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                      </span>
+                      <span>I accept the <a href="#terms" style="color:var(--accent-cyan); text-decoration:none;">Terms</a> & <a href="#privacy" style="color:var(--accent-cyan); text-decoration:none;">Privacy Policy</a></span>
+                    </label>
+                  </div>
+
+                  <!-- Create Account CTA -->
+                  <button type="submit" class="btn-submit-primary" id="btnSignUpSubmit">
+                    <span class="btn-spinner"></span>
+                    <span class="btn-text-content">Create Lumina Account</span>
+                    <svg class="btn-arrow-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                  </button>
+                </form>
+              </div>
+
+            </div> <!-- /forms-viewport -->
+
+          </div> <!-- /auth-card-inner -->
+
+          <!-- Simulated Auth Success Overlay -->
+          <div class="success-overlay-view" id="successOverlay">
+            <div class="success-check-bubble">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+            </div>
+            <h3 style="font-family:'Space Grotesk'; font-size:1.7rem; color:#fff; margin-bottom: 0.5rem;">Access Granted!</h3>
+            <p id="successUserMsg" style="font-size:0.9rem; color:var(--text-secondary); max-width: 320px; line-height: 1.5; margin-bottom: 1.75rem;">
+              Authenticated successfully with 256-bit encryption.
+            </p>
+            <button type="button" class="btn-submit-primary" id="btnResetSession" style="max-width: 240px;">
+              <span>Continue to Console</span>
+            </button>
+          </div>
+
+        </div> <!-- /auth-card -->
+      </section>
+
+    </main>
+
+    <!-- Page Footer -->
+    <footer class="page-footer">
+      <div>
+        <span>&copy; 2026 Lumina Security Systems Inc. All rights reserved.</span>
+      </div>
+      <div class="footer-links">
+        <a href="#compliance">SOC-2 Type II Certified</a>
+        <a href="#privacy">Zero-Log Privacy</a>
+        <a href="#status">Global Network Status</a>
+      </div>
+    </footer>
+
+  </div> <!-- /app-container -->
+
+  <!-- Toast Notification Mount Point -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- Main JavaScript Engine -->
+  <script src="app.js"></script>
+</body>
+</html>
